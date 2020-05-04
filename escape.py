@@ -11,10 +11,10 @@ class GameScreen():
         self.help_text = help_text
 
     def on_click(self, event):
-        if self.roi[0] <= event.x <= self.roi[2] and self.roi[1] <= event.y <= self[3]:
+        if self.roi[0] <= event.x <= self.roi[2] and self.roi[1] <= event.y <= self.roi[3]:
 
             if self.inventory_item:
-                self.master.add.inventory_item(self.inventory_item)
+                self.master.add_inventory_item(self.inventory_item)
             self.master.show_next_screen()
 
 
@@ -27,7 +27,7 @@ class Game(tk.Tk):
         self.current_screen_number = 0
         self.sucess_font = font.Font(family="ubuntu", size=50, weight=font.BOLD)
 
-        self.title("Point and Click")
+        self.title("Clique e Fuja!")
         self.geometry("800x640")
         self.resizable(False, False)
 
@@ -78,7 +78,7 @@ class Game(tk.Tk):
 
     def display_screen(self, game_screen_number):
         self.active_screen = self.game_screens[game_screen_number]
-        self.screen_delete("all")
+        self.screen.delete("all")
         self.screen.create_image((250, 400), image=self.active_screen.image)
         self.help_var.set(self.active_screen.help_text)
 
